@@ -1,3 +1,7 @@
+# ============================================
+#  pabloblazquez.es
+# ============================================
+
 # ---- HTTPS forzado ----
 RewriteEngine On
 RewriteCond %{HTTPS} off
@@ -6,6 +10,10 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # ---- Sin www (canonico) ----
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
+# ---- Sin /index.html duplicado (SEO) ----
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
 
 # ---- Compresion ----
 <IfModule mod_deflate.c>
@@ -22,6 +30,7 @@ RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
 </IfModule>
 
 # ---- Cabeceras de seguridad ----
@@ -29,12 +38,29 @@ RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set X-Frame-Options "SAMEORIGIN"
-  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+
+  # HSTS - ACTIVAR SOLO CUANDO EL SSL ESTE EN VERDE
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Content Security Policy
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests"
+
+  # Quitar cabecera que revela la version del servidor
+  Header unset X-Powered-By
 </IfModule>
 
 # ---- Bloquear ficheros sensibles ----
-<FilesMatch "^\.(env|git|htaccess)|\.(log|sql|bak)$">
+<FilesMatch "^\.(env|git|htaccess|gitignore)|\.(log|sql|bak|ini|md)$">
   Require all denied
 </FilesMatch>
 
+# ---- Bloquear acceso a la carpeta .git ----
+RedirectMatch 404 /\.git
+
+# ---- Sin listado de directorios ----
 Options -Indexes
+
+# ---- Sin firma del servidor ----
+ServerSignature Off
