@@ -223,7 +223,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
 
 /* antes/despues */
 .ba{position:relative;aspect-ratio:8/5;border-radius:9px;overflow:hidden;user-select:none}
-.ba .old,.ba .new{position:absolute;inset:0}
+.ba .old,.ba .new{position:absolute;inset:0;pointer-events:none}
 .ba .old{clip-path:inset(0 50% 0 0);z-index:2}
 .ba-art{display:block;width:100%;height:100%}
 .ba-new-bg{fill:var(--surface)}
@@ -238,10 +238,12 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
   font-size:.68rem;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:6px}
 .ba-label-old{left:10px}
 .ba-label-new{right:10px}
-.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
-.ba .handle{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:50%;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.6)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;touch-action:none}
+.ba .handle{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:50%;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.6);z-index:3}
 .ba .handle::after{content:"◀▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
   background:#fff;color:#111;font-size:.6rem;padding:5px 8px;border-radius:999px}
+@keyframes ba-hint{0%,100%{transform:translateX(0)}50%{transform:translateX(14px)}}
+.demo.in .handle{animation:ba-hint 1s ease-in-out .8s 3}
 
 /* acordeon */
 .acc-item{border-bottom:1px solid var(--line)}
@@ -784,6 +786,20 @@ if(baR){
     document.getElementById('baHandle').style.left=baR.value+'%';
   };
   baR.addEventListener('input',upd); upd();
+
+  let baDragging=false;
+  const baSetFromX=x=>{
+    const r=baR.getBoundingClientRect();
+    baR.value=Math.max(0,Math.min(100,((x-r.left)/r.width)*100));
+    upd();
+  };
+  baR.addEventListener('pointerdown',e=>{
+    baDragging=true;
+    baR.setPointerCapture(e.pointerId);
+    baSetFromX(e.clientX);
+  });
+  baR.addEventListener('pointermove',e=>{ if(baDragging) baSetFromX(e.clientX); });
+  ['pointerup','pointercancel'].forEach(ev=>baR.addEventListener(ev,()=>{baDragging=false;}));
 }
 
 // 3. Acordeon
