@@ -28,7 +28,7 @@
   "description":"Diseño y programación de webs a medida para pequeños negocios.",
   "url":"https://pabloblazquez.es/",
   "email":"hola@pabloblazquez.es",
-  "telephone":"+34618510856",
+  "telephone":"+34600000000",
   "priceRange":"€€",
   "areaServed":[{"@type":"City","name":"Antequera"},{"@type":"AdministrativeArea","name":"Málaga"}],
   "address":{"@type":"PostalAddress","addressLocality":"Antequera","addressRegion":"Málaga","addressCountry":"ES"},
@@ -185,6 +185,90 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
 .foot a{color:var(--muted);text-decoration:none;margin-left:18px}
 .foot a:hover{color:var(--albero)}
 
+
+/* ---------- Escaparate de componentes ---------- */
+.lab{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:44px}
+.demo{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px;display:flex;flex-direction:column;gap:16px;transition:.3s var(--ease)}
+.demo:hover{border-color:color-mix(in srgb,var(--albero) 45%,var(--line))}
+.demo h3{font-size:1.15rem}
+.demo > p{color:var(--muted);font-size:.9rem;margin-top:-8px}
+.stage{background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:18px;min-height:190px}
+.want{margin-top:auto;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
+  font-size:.85rem;font-weight:700;color:var(--albero);text-decoration:none;
+  border:1px dashed color-mix(in srgb,var(--albero) 50%,transparent);padding:9px 15px;border-radius:999px;transition:.2s}
+.want:hover{background:color-mix(in srgb,var(--albero) 14%,transparent);border-style:solid}
+
+/* galeria */
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gal button{aspect-ratio:1;border:0;border-radius:8px;cursor:pointer;padding:0;overflow:hidden;transition:.25s var(--ease)}
+.gal button:hover{transform:scale(1.06)}
+.g1{background:linear-gradient(135deg,#E8A33D,#C1502E)}
+.g2{background:linear-gradient(135deg,#1F6F62,#0F3B3A)}
+.g3{background:linear-gradient(135deg,#C1502E,#7A2E1C)}
+.g4{background:linear-gradient(135deg,#2C4A6E,#16283D)}
+.g5{background:linear-gradient(135deg,#E8A33D,#8A6120)}
+.g6{background:linear-gradient(135deg,#1F6F62,#5B8C46)}
+.lbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:120;padding:24px}
+.lbox.on{display:grid}
+.lbox div{width:min(460px,86vw);aspect-ratio:1;border-radius:16px;box-shadow:0 30px 80px -20px #000}
+.lbox p{color:#fff;position:absolute;top:22px;right:26px;font-size:1.6rem;cursor:pointer}
+
+/* antes/despues */
+.ba{position:relative;height:150px;border-radius:9px;overflow:hidden;user-select:none}
+.ba .old,.ba .new{position:absolute;inset:0;display:grid;place-items:center;
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.14em;color:#fff}
+.ba .old{background:linear-gradient(135deg,#4A4A48,#2B2B2A)}
+.ba .new{background:linear-gradient(135deg,#1F6F62,#E8A33D);clip-path:inset(0 50% 0 0)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.ba .handle{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:50%;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.6)}
+.ba .handle::after{content:"◀▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:#fff;color:#111;font-size:.6rem;padding:5px 8px;border-radius:999px}
+
+/* acordeon */
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-item:last-child{border:0}
+.acc-h{width:100%;background:none;border:0;color:var(--text);font-family:"Karla";font-size:.95rem;
+  font-weight:700;text-align:left;padding:13px 0;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.acc-h span{color:var(--albero);transition:transform .3s var(--ease)}
+.acc-item.open .acc-h span{transform:rotate(45deg)}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);color:var(--muted);font-size:.88rem}
+.acc-item.open .acc-b{max-height:170px}
+.acc-b div{padding-bottom:13px;display:flex;justify-content:space-between;gap:14px}
+.acc-b b{color:var(--albero);font-weight:700;white-space:nowrap}
+
+/* estado abierto */
+.open-now{text-align:center;padding:8px 0}
+.dot-live{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:9px;
+  animation:blink 2s infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:.25}}
+.open-now .state{font-family:"Bricolage Grotesque";font-weight:800;font-size:1.5rem}
+.hours{margin-top:14px;font-size:.82rem;color:var(--muted)}
+.hours div{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px dashed var(--line)}
+.hours div:last-child{border:0}
+.hours .today{color:var(--albero);font-weight:700}
+
+/* contadores */
+.counts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center;padding:22px 0}
+.counts b{font-family:"Bricolage Grotesque";font-size:2rem;color:var(--albero);display:block;line-height:1}
+.counts span{font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted)}
+
+/* reservas */
+.days{display:flex;gap:6px;margin-bottom:14px}
+.days button{flex:1;padding:9px 0;border-radius:8px;border:1px solid var(--line);background:transparent;
+  color:var(--text);cursor:pointer;font-family:"IBM Plex Mono",monospace;font-size:.68rem;transition:.2s}
+.days button[aria-pressed="true"]{background:var(--albero);border-color:var(--albero);color:#14100A;font-weight:600}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}
+.slots button{padding:9px 0;border-radius:7px;border:1px solid var(--line);background:transparent;
+  color:var(--text);cursor:pointer;font-size:.8rem;transition:.2s}
+.slots button:hover:not(:disabled){border-color:var(--albero)}
+.slots button:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slots button[aria-pressed="true"]{background:var(--pino);border-color:var(--pino);color:#fff;font-weight:700}
+.book-msg{margin-top:12px;font-size:.82rem;color:var(--pino);font-weight:700;min-height:20px}
+
+@media(max-width:900px){.lab{grid-template-columns:1fr}}
+
 /* ---------- Botón flotante de WhatsApp ---------- */
 .wa{position:fixed;right:22px;bottom:22px;z-index:80;display:flex;align-items:center;gap:0;
   background:#25D366;color:#0A2E18;text-decoration:none;border-radius:999px;
@@ -238,6 +322,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       <a href="#servicios">Servicios</a>
       <a href="#precio">Precio</a>
       <a href="#trabajos">Trabajos</a>
+      <a href="#escaparate">Escaparate</a>
       <a href="#proceso">Proceso</a>
       <a href="#contacto" class="btn btn-primary">Pedir presupuesto</a>
     </div>
@@ -319,7 +404,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
             <div class="opts" data-group="tipo" data-mode="single">
               <button class="opt" data-price="950" aria-pressed="true">Una sola página</button>
               <button class="opt" data-price="1600" aria-pressed="false">Web de 4–6 páginas</button>
-              <button class="opt" data-price="2000" aria-pressed="false">Web con acceso para clientes</button>
+              <button class="opt" data-price="2000" aria-pressed="false">Web con zona privada</button>
             </div>
           </div>
           <div class="opt-group">
@@ -395,6 +480,110 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
   </div>
 </section>
 
+<!-- ESCAPARATE -->
+<section id="escaparate">
+  <div class="wrap">
+    <div class="eyebrow rv"><span class="mono">Escaparate</span></div>
+    <h2 class="rv" style="font-size:clamp(1.9rem,4.5vw,2.8rem);max-width:22ch;margin-bottom:14px">Toca, prueba, y dime cuál quieres en la tuya</h2>
+    <p class="rv" style="color:var(--muted);max-width:58ch;margin-bottom:8px">Esto no son capturas: funcionan de verdad, aquí mismo. Pruébalos y pulsa el botón del que te encaje. Me llega tu mensaje con el nombre y ya sé de qué hablamos.</p>
+
+    <div class="lab">
+
+      <!-- 1. GALERIA -->
+      <article class="demo rv">
+        <h3>Galería ampliable</h3>
+        <p>Toca cualquier foto y se abre a pantalla completa.</p>
+        <div class="stage">
+          <div class="gal">
+            <button class="g1" data-c="g1" aria-label="Foto 1"></button>
+            <button class="g2" data-c="g2" aria-label="Foto 2"></button>
+            <button class="g3" data-c="g3" aria-label="Foto 3"></button>
+            <button class="g4" data-c="g4" aria-label="Foto 4"></button>
+            <button class="g5" data-c="g5" aria-label="Foto 5"></button>
+            <button class="g6" data-c="g6" aria-label="Foto 6"></button>
+          </div>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20una%20galer%C3%ADa%20ampliable%20en%20mi%20web" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+      <!-- 2. ANTES / DESPUES -->
+      <article class="demo rv">
+        <h3>Antes y después</h3>
+        <p>Arrastra para comparar. Ideal para reformas, peluquerías o dentistas.</p>
+        <div class="stage">
+          <div class="ba">
+            <div class="old">ANTES</div>
+            <div class="new" id="baNew">DESPUÉS</div>
+            <div class="handle" id="baHandle"></div>
+            <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Comparar antes y después">
+          </div>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20un%20comparador%20de%20antes%20y%20despu%C3%A9s" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+      <!-- 3. CARTA DESPLEGABLE -->
+      <article class="demo rv">
+        <h3>Carta o catálogo desplegable</h3>
+        <p>Se abre por secciones. Perfecto para bares y restaurantes.</p>
+        <div class="stage">
+          <div class="acc">
+            <div class="acc-item open"><button class="acc-h">Para picar <span>+</span></button>
+              <div class="acc-b"><div><span>Croquetas caseras</span><b>7,50 €</b></div><div><span>Ensaladilla</span><b>6,00 €</b></div></div></div>
+            <div class="acc-item"><button class="acc-h">Carnes <span>+</span></button>
+              <div class="acc-b"><div><span>Solomillo a la pimienta</span><b>18,00 €</b></div><div><span>Porra antequerana</span><b>5,50 €</b></div></div></div>
+            <div class="acc-item"><button class="acc-h">Postres <span>+</span></button>
+              <div class="acc-b"><div><span>Tarta de queso</span><b>5,00 €</b></div><div><span>Flan de la casa</span><b>4,00 €</b></div></div></div>
+          </div>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20una%20carta%20desplegable%20en%20mi%20web" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+      <!-- 4. ABIERTO AHORA -->
+      <article class="demo rv">
+        <h3>Abierto ahora mismo</h3>
+        <p>Calcula la hora real y le dice al cliente si puede venir ya.</p>
+        <div class="stage">
+          <div class="open-now">
+            <span class="dot-live" id="liveDot"></span><span class="state" id="liveState">—</span>
+            <p style="font-size:.82rem;color:var(--muted);margin-top:6px" id="liveHint"></p>
+          </div>
+          <div class="hours" id="hoursList"></div>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20el%20indicador%20de%20abierto%20ahora" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+      <!-- 5. CONTADORES -->
+      <article class="demo rv">
+        <h3>Cifras que cuentan solas</h3>
+        <p>Los números suben al llegar a esa parte de la página.</p>
+        <div class="stage" id="countStage">
+          <div class="counts">
+            <div><b class="cnt" data-to="12">0</b><span>Años abiertos</span></div>
+            <div><b class="cnt" data-to="480">0</b><span>Clientes</span></div>
+            <div><b class="cnt" data-to="98" data-suf="%">0</b><span>Repiten</span></div>
+          </div>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20contadores%20animados%20en%20mi%20web" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+      <!-- 6. RESERVAS -->
+      <article class="demo rv">
+        <h3>Reserva de cita</h3>
+        <p>El cliente elige día y hora sin llamar por teléfono.</p>
+        <div class="stage">
+          <div class="days" id="days"></div>
+          <div class="slots" id="slots"></div>
+          <p class="book-msg" id="bookMsg"></p>
+        </div>
+        <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20un%20sistema%20de%20reservas%20de%20cita" target="_blank" rel="noopener">Lo quiero en mi web →</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<div class="lbox" id="lbox"><p>&times;</p><div id="lboxImg"></div></div>
+
 <!-- PROCESO -->
 <section id="proceso">
   <div class="wrap">
@@ -417,14 +606,14 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       <p>Cuéntame qué negocio tienes y qué quieres conseguir. Respondo el mismo día y la primera conversación no cuesta nada.</p>
       <div class="contact-row">
         <a href="mailto:hola@pabloblazquez.es" class="btn btn-primary">hola@pabloblazquez.es</a>
-        <a href="https://wa.me/34618510856" class="btn btn-ghost">WhatsApp</a>
+        <a href="https://wa.me/34600000000" class="btn btn-ghost">WhatsApp</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Botón flotante de WhatsApp -->
-<a class="wa" id="wa" href="https://wa.me/34618510856?text=Hola%20Pablo%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio"
+<a class="wa" id="wa" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20informaci%C3%B3n%20sobre%20una%20web%20para%20mi%20negocio"
    target="_blank" rel="noopener" aria-label="Escríbeme por WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.8h-.02a9.8 9.8 0 0 1-4.99-1.37l-.36-.21-3.71.97.99-3.62-.23-.37a9.78 9.78 0 0 1-1.5-5.22c0-5.4 4.4-9.8 9.82-9.8 2.62 0 5.08 1.03 6.93 2.88a9.74 9.74 0 0 1 2.87 6.93c0 5.4-4.4 9.8-9.8 9.8M20.5 3.49A11.7 11.7 0 0 0 12.05 0C5.55 0 .27 5.28.26 11.77c0 2.07.55 4.1 1.58 5.88L.16 24l6.5-1.7a11.75 11.75 0 0 0 5.39 1.37h.01c6.5 0 11.78-5.28 11.78-11.77 0-3.15-1.22-6.1-3.45-8.33"/>
@@ -492,6 +681,100 @@ document.querySelectorAll('.opts').forEach(group=>{
   });
 });
 calc();
+
+/* ===== Escaparate ===== */
+// 1. Galeria con lightbox
+const lbox=document.getElementById('lbox'), lboxImg=document.getElementById('lboxImg');
+document.querySelectorAll('.gal button').forEach(b=>b.addEventListener('click',()=>{
+  lboxImg.className=b.dataset.c; lbox.classList.add('on');
+}));
+lbox.addEventListener('click',()=>lbox.classList.remove('on'));
+addEventListener('keydown',e=>{if(e.key==='Escape')lbox.classList.remove('on')});
+
+// 2. Antes / despues
+const baR=document.getElementById('baRange');
+if(baR){
+  const upd=()=>{
+    document.getElementById('baNew').style.clipPath='inset(0 '+(100-baR.value)+'% 0 0)';
+    document.getElementById('baHandle').style.left=baR.value+'%';
+  };
+  baR.addEventListener('input',upd); upd();
+}
+
+// 3. Acordeon
+document.querySelectorAll('.acc-h').forEach(h=>h.addEventListener('click',()=>{
+  const item=h.parentElement, wasOpen=item.classList.contains('open');
+  item.parentElement.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}));
+
+// 4. Abierto ahora
+(function(){
+  const dias=['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  // apertura y cierre en horas decimales; null = cerrado
+  const horario={1:[9,20],2:[9,20],3:[9,20],4:[9,20],5:[9,21],6:[10,14],0:null};
+  const now=new Date(), d=now.getDay(), h=now.getHours()+now.getMinutes()/60;
+  const hoy=horario[d];
+  const abierto = hoy && h>=hoy[0] && h<hoy[1];
+  const dot=document.getElementById('liveDot'), st=document.getElementById('liveState'), hint=document.getElementById('liveHint');
+  if(dot){
+    dot.style.background = abierto ? '#2ECC71' : '#C1502E';
+    st.textContent = abierto ? 'Abierto ahora' : 'Cerrado ahora';
+    st.style.color = abierto ? '#2ECC71' : '#C1502E';
+    hint.textContent = abierto ? 'Cierra a las '+hoy[1]+':00' : 'Consulta el horario abajo';
+  }
+  const list=document.getElementById('hoursList');
+  if(list){
+    let html='';
+    for(let i=1;i<=6;i++){const r=horario[i];
+      html+='<div class="'+(i===d?'today':'')+'"><span>'+dias[i]+'</span><span>'+(r? r[0]+':00 – '+r[1]+':00':'Cerrado')+'</span></div>';}
+    html+='<div class="'+(d===0?'today':'')+'"><span>Domingo</span><span>Cerrado</span></div>';
+    list.innerHTML=html;
+  }
+})();
+
+// 5. Contadores
+const cStage=document.getElementById('countStage');
+if(cStage){
+  const runCount=()=>{
+    document.querySelectorAll('.cnt').forEach(el=>{
+      const to=+el.dataset.to, suf=el.dataset.suf||'';
+      let cur=0; const step=to/45;
+      const t=setInterval(()=>{cur+=step; if(cur>=to){cur=to;clearInterval(t);}
+        el.textContent=Math.round(cur)+suf;},22);
+    });
+  };
+  new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){runCount();o.disconnect();}}),{threshold:.4}).observe(cStage);
+}
+
+// 6. Reservas
+(function(){
+  const daysEl=document.getElementById('days'), slotsEl=document.getElementById('slots'), msg=document.getElementById('bookMsg');
+  if(!daysEl) return;
+  const nom=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const base=new Date();
+  const fechas=[...Array(4)].map((_,i)=>{const d=new Date(base); d.setDate(base.getDate()+i+1); return d;});
+  const horas=['09:30','10:30','11:30','12:30','16:00','17:00','18:00','19:00'];
+  let sel=0;
+  const pintaDias=()=>{
+    daysEl.innerHTML=fechas.map((f,i)=>
+      '<button aria-pressed="'+(i===sel)+'" data-i="'+i+'">'+nom[f.getDay()]+' '+f.getDate()+'</button>').join('');
+  };
+  const pintaHoras=()=>{
+    slotsEl.innerHTML=horas.map((h,i)=>
+      '<button '+((i+sel)%3===0?'disabled':'')+' data-h="'+h+'">'+h+'</button>').join('');
+    msg.textContent='';
+  };
+  daysEl.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b)return;
+    sel=+b.dataset.i; pintaDias(); pintaHoras();});
+  slotsEl.addEventListener('click',e=>{const b=e.target.closest('button'); if(!b||b.disabled)return;
+    slotsEl.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    const f=fechas[sel];
+    msg.textContent='✓ Reservado el '+nom[f.getDay()]+' '+f.getDate()+' a las '+b.dataset.h;});
+  pintaDias(); pintaHoras();
+})();
+
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
