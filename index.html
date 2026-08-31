@@ -194,7 +194,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
 .demo:hover{border-color:color-mix(in srgb,var(--albero) 45%,var(--line))}
 .demo h3{font-size:1.15rem}
 .demo > p{color:var(--muted);font-size:.9rem;margin-top:-8px}
-.stage{background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:18px;min-height:190px}
+.stage{background:var(--surface-2);border:1px solid var(--line);border-radius:11px;padding:18px;min-height:190px;
+  flex:1;display:flex;flex-direction:column;justify-content:center}
 .want{margin-top:auto;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;
   font-size:.85rem;font-weight:700;color:var(--albero);text-decoration:none;
   border:1px dashed color-mix(in srgb,var(--albero) 50%,transparent);padding:9px 15px;border-radius:999px;transition:.2s}
@@ -202,25 +203,41 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
 
 /* galeria */
 .gal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.gal button{aspect-ratio:1;border:0;border-radius:8px;cursor:pointer;padding:0;overflow:hidden;transition:.25s var(--ease)}
+.gal button{aspect-ratio:1;border:0;border-radius:8px;cursor:pointer;padding:0;overflow:hidden;
+  position:relative;background:var(--surface-2);transition:.25s var(--ease)}
 .gal button:hover{transform:scale(1.06)}
-.g1{background:linear-gradient(135deg,#E8A33D,#C1502E)}
-.g2{background:linear-gradient(135deg,#1F6F62,#0F3B3A)}
-.g3{background:linear-gradient(135deg,#C1502E,#7A2E1C)}
-.g4{background:linear-gradient(135deg,#2C4A6E,#16283D)}
-.g5{background:linear-gradient(135deg,#E8A33D,#8A6120)}
-.g6{background:linear-gradient(135deg,#1F6F62,#5B8C46)}
+.gal button img{width:100%;height:100%;object-fit:cover;display:block}
+.gal button.err img{display:none}
+.gal button.err::after{content:"Sin foto";position:absolute;inset:0;display:grid;place-items:center;
+  border:1px dashed var(--line);font-family:"IBM Plex Mono",monospace;font-size:.6rem;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--muted)}
 .lbox{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;place-items:center;z-index:120;padding:24px}
 .lbox.on{display:grid}
-.lbox div{width:min(460px,86vw);aspect-ratio:1;border-radius:16px;box-shadow:0 30px 80px -20px #000}
+.lbox img{width:min(680px,90vw);aspect-ratio:4/3;object-fit:contain;border-radius:16px;
+  box-shadow:0 30px 80px -20px #000;background:var(--surface-2)}
+.lbox.err img{display:none}
+.lbox.err::before{content:"Imagen no disponible";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.05em;text-transform:uppercase;color:#fff;
+  background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.3);padding:14px 22px;border-radius:10px}
 .lbox p{color:#fff;position:absolute;top:22px;right:26px;font-size:1.6rem;cursor:pointer}
 
 /* antes/despues */
-.ba{position:relative;height:150px;border-radius:9px;overflow:hidden;user-select:none}
-.ba .old,.ba .new{position:absolute;inset:0;display:grid;place-items:center;
-  font-family:"IBM Plex Mono",monospace;font-size:.75rem;letter-spacing:.14em;color:#fff}
-.ba .old{background:linear-gradient(135deg,#4A4A48,#2B2B2A)}
-.ba .new{background:linear-gradient(135deg,#1F6F62,#E8A33D);clip-path:inset(0 50% 0 0)}
+.ba{position:relative;aspect-ratio:8/5;border-radius:9px;overflow:hidden;user-select:none}
+.ba .old,.ba .new{position:absolute;inset:0}
+.ba .new{clip-path:inset(0 50% 0 0)}
+.ba-art{display:block;width:100%;height:100%}
+.ba-new-bg{fill:var(--surface)}
+.ba-new-line{stroke:var(--line);stroke-width:1}
+.ba-new-accent{fill:var(--albero)}
+.ba-new-pill{fill:none;stroke:var(--line)}
+.ba-new-text{fill:var(--text)}
+.ba-new-muted{fill:var(--muted)}
+.ba-new-cta{fill:var(--albero)}
+.ba-new-cta-text{fill:#14100A}
+.ba-label{position:absolute;top:10px;pointer-events:none;font-family:"IBM Plex Mono",monospace;
+  font-size:.68rem;letter-spacing:.12em;color:#fff;background:rgba(0,0,0,.55);padding:5px 9px;border-radius:6px}
+.ba-label-old{left:10px}
+.ba-label-new{right:10px}
 .ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
 .ba .handle{position:absolute;top:0;bottom:0;width:3px;background:#fff;left:50%;pointer-events:none;box-shadow:0 0 12px rgba(0,0,0,.6)}
 .ba .handle::after{content:"◀▶";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
@@ -496,15 +513,15 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       <!-- 1. GALERIA -->
       <article class="demo rv">
         <h3>Galería ampliable</h3>
-        <p>Toca cualquier foto y se abre a pantalla completa.</p>
+        <p>Toca cualquier captura y se abre a pantalla completa. Ejemplos reales de webs que he hecho.</p>
         <div class="stage">
           <div class="gal">
-            <button class="g1" data-c="g1" aria-label="Foto 1"></button>
-            <button class="g2" data-c="g2" aria-label="Foto 2"></button>
-            <button class="g3" data-c="g3" aria-label="Foto 3"></button>
-            <button class="g4" data-c="g4" aria-label="Foto 4"></button>
-            <button class="g5" data-c="g5" aria-label="Foto 5"></button>
-            <button class="g6" data-c="g6" aria-label="Foto 6"></button>
+            <button><img src="/img/galeria/1.webp" alt="Captura de la web de un restaurante" width="300" height="300" loading="lazy"></button>
+            <button><img src="/img/galeria/2.webp" alt="Captura de la web de una clínica dental" width="300" height="300" loading="lazy"></button>
+            <button><img src="/img/galeria/3.webp" alt="Captura de la web de una inmobiliaria" width="300" height="300" loading="lazy"></button>
+            <button><img src="/img/galeria/4.webp" alt="Captura de la web de una peluquería" width="300" height="300" loading="lazy"></button>
+            <button><img src="/img/galeria/5.webp" alt="Captura de la web de un gimnasio" width="300" height="300" loading="lazy"></button>
+            <button><img src="/img/galeria/6.webp" alt="Captura de la web de una tienda online" width="300" height="300" loading="lazy"></button>
           </div>
         </div>
         <a class="want" href="https://wa.me/34600000000?text=Hola%20Pablo%2C%20quiero%20una%20galer%C3%ADa%20ampliable%20en%20mi%20web" target="_blank" rel="noopener">Lo quiero en mi web →</a>
@@ -516,8 +533,42 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
         <p>Arrastra para comparar. Ideal para reformas, peluquerías o dentistas.</p>
         <div class="stage">
           <div class="ba">
-            <div class="old">ANTES</div>
-            <div class="new" id="baNew">DESPUÉS</div>
+            <div class="old">
+              <svg class="ba-art" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" role="presentation" focusable="false">
+                <rect width="320" height="200" fill="#F5EFD9"/>
+                <rect width="320" height="28" fill="#0B3B78"/>
+                <text x="12" y="19" font-family="'Times New Roman', Times, serif" font-size="13" font-weight="700" fill="#FFFFFF">Mi Negocio S.L.</text>
+                <rect x="190" y="6" width="44" height="16" fill="#C9C9C9" stroke="#5A5A5A"/>
+                <text x="196" y="18" font-family="'Times New Roman', serif" font-size="8" fill="#111">Inicio</text>
+                <rect x="244" y="6" width="64" height="16" fill="#C9C9C9" stroke="#5A5A5A"/>
+                <text x="250" y="18" font-family="'Times New Roman', serif" font-size="8" fill="#111">Contacto</text>
+                <text x="160" y="62" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="20" font-weight="700" fill="#CC0000">¡Bienvenidos!</text>
+                <line x1="20" y1="76" x2="300" y2="76" stroke="#999999"/>
+                <text x="20" y="92" font-family="'Times New Roman', Times, serif" font-size="9" fill="#333333">Lorem ipsum dolor sit amet consectetur</text>
+                <text x="20" y="106" font-family="'Times New Roman', Times, serif" font-size="9" fill="#333333">adipiscing elit sed do eiusmod tempor.</text>
+                <rect x="20" y="124" width="140" height="26" fill="#FFFF00" stroke="#000000" stroke-width="2"/>
+                <text x="90" y="141" text-anchor="middle" font-family="'Times New Roman', Times, serif" font-size="10" font-weight="700" fill="#000000">¡CONTÁCTENOS YA!</text>
+                <g transform="translate(280,170) rotate(-12)">
+                  <polygon points="0,-15 4.4,-4.6 15,-4.6 6.5,2.4 9.3,15 0,7.5 -9.3,15 -6.5,2.4 -15,-4.6 -4.4,-4.6" fill="#E60000"/>
+                  <text x="0" y="2.5" text-anchor="middle" font-family="Arial, sans-serif" font-size="6.5" font-weight="700" fill="#FFFFFF">NEW</text>
+                </g>
+              </svg>
+            </div>
+            <div class="new" id="baNew">
+              <svg class="ba-art" viewBox="0 0 320 200" preserveAspectRatio="xMidYMid meet" role="presentation" focusable="false">
+                <rect width="320" height="200" class="ba-new-bg"/>
+                <line x1="0" y1="34" x2="320" y2="34" class="ba-new-line"/>
+                <rect x="20" y="10" width="14" height="14" rx="4" class="ba-new-accent"/>
+                <text x="42" y="22" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="800" class="ba-new-text">Tu Negocio</text>
+                <rect x="248" y="10" width="52" height="16" rx="8" class="ba-new-pill"/>
+                <text x="274" y="22" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="8" class="ba-new-muted">Contacto</text>
+                <text x="20" y="76" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="800" class="ba-new-text">Tu negocio,<tspan x="20" dy="26">en internet.</tspan></text>
+                <rect x="20" y="150" width="110" height="26" rx="13" class="ba-new-cta"/>
+                <text x="75" y="167" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" class="ba-new-cta-text">Ver más →</text>
+              </svg>
+            </div>
+            <span class="ba-label ba-label-old">ANTES</span>
+            <span class="ba-label ba-label-new">DESPUÉS</span>
             <div class="handle" id="baHandle"></div>
             <input type="range" min="0" max="100" value="50" id="baRange" aria-label="Comparar antes y después">
           </div>
@@ -586,7 +637,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
   </div>
 </section>
 
-<div class="lbox" id="lbox"><p>&times;</p><div id="lboxImg"></div></div>
+<div class="lbox" id="lbox"><p>&times;</p><img id="lboxImg" src="" alt=""></div>
 
 <!-- PROCESO -->
 <section id="proceso">
@@ -700,12 +751,30 @@ calc();
 
 /* ===== Escaparate ===== */
 // 1. Galeria con lightbox
+const galItems=[...document.querySelectorAll('.gal button')];
 const lbox=document.getElementById('lbox'), lboxImg=document.getElementById('lboxImg');
-document.querySelectorAll('.gal button').forEach(b=>b.addEventListener('click',()=>{
-  lboxImg.className=b.dataset.c; lbox.classList.add('on');
-}));
+let galIdx=0;
+function openLbox(i){
+  galIdx=(i+galItems.length)%galItems.length;
+  const img=galItems[galIdx].querySelector('img');
+  lbox.classList.toggle('err', galItems[galIdx].classList.contains('err'));
+  lboxImg.alt=img.alt; lboxImg.src=img.src;
+  lbox.classList.add('on');
+}
+galItems.forEach((b,i)=>{
+  const img=b.querySelector('img');
+  img.addEventListener('error',()=>b.classList.add('err'),{once:true});
+  b.addEventListener('click',()=>openLbox(i));
+});
+lboxImg.addEventListener('error',()=>lbox.classList.add('err'));
+lboxImg.addEventListener('click',e=>e.stopPropagation());
 lbox.addEventListener('click',()=>lbox.classList.remove('on'));
-addEventListener('keydown',e=>{if(e.key==='Escape')lbox.classList.remove('on')});
+addEventListener('keydown',e=>{
+  if(!lbox.classList.contains('on'))return;
+  if(e.key==='Escape')lbox.classList.remove('on');
+  else if(e.key==='ArrowRight')openLbox(galIdx+1);
+  else if(e.key==='ArrowLeft')openLbox(galIdx-1);
+});
 
 // 2. Antes / despues
 const baR=document.getElementById('baRange');
