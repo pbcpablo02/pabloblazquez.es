@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pablo Blázquez · Diseño y programación de webs en Antequera</title>
-<meta name="description" content="Webs a medida para pequeños negocios de Antequera y Málaga. Dominio, alojamiento y mantenimiento incluidos. Desde 950 €.">
+<title>Pablo Blázquez · Webs a medida en Antequera y toda España</title>
+<meta name="description" content="Webs a medida para pequeños negocios de Antequera, Málaga y toda España, en remoto. Dominio, alojamiento y mantenimiento incluidos. Desde 950 €.">
 <link rel="canonical" href="https://pabloblazquez.es/">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#0D1412">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://pabloblazquez.es/">
-<meta property="og:title" content="Pablo Blázquez · Webs a medida en Antequera">
-<meta property="og:description" content="Diseño y programo la web de tu negocio desde cero. Dominio, alojamiento y mantenimiento incluidos.">
+<meta property="og:title" content="Pablo Blázquez · Webs a medida en Antequera y toda España">
+<meta property="og:description" content="Diseño y programo la web de tu negocio desde cero, en Antequera o en remoto para toda España. Dominio, alojamiento y mantenimiento incluidos.">
 <meta property="og:image" content="https://pabloblazquez.es/og.jpg">
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
   "email":"hola@pabloblazquez.es",
   "telephone":"+34600000000",
   "priceRange":"€€",
-  "areaServed":[{"@type":"City","name":"Antequera"},{"@type":"AdministrativeArea","name":"Málaga"}],
+  "areaServed":{"@type":"Country","name":"España"},
   "address":{"@type":"PostalAddress","addressLocality":"Antequera","addressRegion":"Málaga","addressCountry":"ES"},
   "founder":{"@type":"Person","name":"Pablo Blázquez Campos"},
   "makesOffer":[
@@ -167,6 +167,10 @@ header.stuck{border-bottom-color:var(--line)}
 .stack{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:12px}
 .stack span{font-family:"IBM Plex Mono",monospace;font-size:.68rem;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:6px}
 .work-link{text-decoration:none;color:var(--albero);font-weight:700;font-size:.92rem}
+.work-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:10px;display:block;background:var(--surface-2)}
+.work-thumb.placeholder{display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);
+  color:var(--muted);font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.05em;
+  text-transform:uppercase;text-align:center;padding:8px}
 
 /* ---------- Proceso ---------- */
 .steps{margin-top:44px;border-top:1px solid var(--line)}
@@ -338,7 +342,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
   <div class="glow a"></div><div class="glow b"></div>
   <div class="wrap hero-grid">
     <div>
-      <p class="mono" style="margin-bottom:18px">Desarrollo web · Antequera, Málaga</p>
+      <p class="mono" style="margin-bottom:18px">Desarrollo web a medida · Trabajo remoto, toda España</p>
       <h1>Tu negocio existe.<br>En Google, <em>todavía no.</em></h1>
       <p class="lead">Diseño y programo la web de tu negocio desde cero: rápida, que se vea bien en el móvil y que aparezca cuando alguien busque lo que vendes. Dominio y alojamiento incluidos, sin plantillas de catálogo.</p>
       <div class="hero-cta">
@@ -447,6 +451,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
     <div class="work">
 
       <article class="work-card rv">
+        <img class="work-thumb" src="/img/lepetitmonde.webp" width="800" height="450" loading="lazy"
+          alt="Captura de la página de inicio de lepetitmonde.net, web de un centro infantil">
         <span class="tag live">● En producción</span>
         <h3>Le Petit Monde</h3>
         <p>Web para un centro infantil: formulario de contacto que llega al correo del centro, aviso de cookies conforme a la ley y trabajo de posicionamiento para que aparezca al buscar guarderías en la zona.</p>
@@ -455,6 +461,8 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       </article>
 
       <article class="work-card rv">
+        <img class="work-thumb" src="/img/clubhipico.webp" width="800" height="450" loading="lazy"
+          alt="Captura de la web de Club Hípico Antequera, con zona privada de clases y tarifas">
         <span class="tag live">● En producción</span>
         <h3>Club Hípico Antequera</h3>
         <p>Web con zona privada y base de datos: gestión de clases, tarifas consultables y distintos niveles de acceso según el tipo de usuario.</p>
@@ -463,6 +471,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       </article>
 
       <article class="work-card rv">
+        <div class="work-thumb placeholder" aria-hidden="true">Captura próximamente</div>
         <span class="tag dev">◐ En desarrollo</span>
         <h3>Correduría de seguros</h3>
         <p>Web corporativa para una correduría local: presentación de servicios, formulario de solicitud de póliza y navegación pensada para móvil.</p>
@@ -470,6 +479,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
       </article>
 
       <article class="work-card rv">
+        <div class="work-thumb placeholder" aria-hidden="true">Captura próximamente</div>
         <span class="tag dev">◐ Proyecto propio</span>
         <h3>Restaurante · concepto</h3>
         <p>Ejercicio propio de diseño para hostelería: carta digital, reservas y una presentación con scroll pensada para enseñar el sitio antes de que el cliente llegue.</p>
@@ -530,7 +540,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
             <div class="acc-item open"><button class="acc-h">Para picar <span>+</span></button>
               <div class="acc-b"><div><span>Croquetas caseras</span><b>7,50 €</b></div><div><span>Ensaladilla</span><b>6,00 €</b></div></div></div>
             <div class="acc-item"><button class="acc-h">Carnes <span>+</span></button>
-              <div class="acc-b"><div><span>Solomillo a la pimienta</span><b>18,00 €</b></div><div><span>Porra antequerana</span><b>5,50 €</b></div></div></div>
+              <div class="acc-b"><div><span>Solomillo a la pimienta</span><b>18,00 €</b></div><div><span>Alitas de pollo</span><b>5,50 €</b></div></div></div>
             <div class="acc-item"><button class="acc-h">Postres <span>+</span></button>
               <div class="acc-b"><div><span>Tarta de queso</span><b>5,00 €</b></div><div><span>Flan de la casa</span><b>4,00 €</b></div></div></div>
           </div>
@@ -590,7 +600,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
     <div class="eyebrow rv"><span class="mono">Cómo trabajo</span></div>
     <h2 class="rv" style="font-size:clamp(1.9rem,4.5vw,2.8rem);max-width:20ch">Cuatro pasos y una fecha de entrega</h2>
     <div class="steps">
-      <div class="step rv"><span class="num">01</span><h3>Hablamos</h3><p>Media hora, en persona o por teléfono. Me cuentas qué vendes y a quién. Salgo de ahí con un presupuesto cerrado por escrito, sin sorpresas después.</p></div>
+      <div class="step rv"><span class="num">01</span><h3>Hablamos</h3><p>Media hora, por videollamada o teléfono. Me cuentas qué vendes y a quién. Salgo de ahí con un presupuesto cerrado por escrito, sin sorpresas después.</p></div>
       <div class="step rv"><span class="num">02</span><h3>Te enseño el diseño</h3><p>Antes de programar nada verás cómo va a quedar. Los cambios en esta fase son gratis y rápidos.</p></div>
       <div class="step rv"><span class="num">03</span><h3>La programo</h3><p>Código propio, sin plantillas. Te paso un enlace privado para que la vayas viendo mientras avanzo.</p></div>
       <div class="step rv"><span class="num">04</span><h3>La publico y me quedo</h3><p>Dominio, servidor, certificado y alta en Google. A partir de ahí, si necesitas un cambio me escribes y ya está.</p></div>
@@ -623,7 +633,7 @@ footer{border-top:1px solid var(--line);padding:34px 0;font-size:.85rem;color:va
 
 <footer>
   <div class="wrap foot">
-    <span>© <span id="yr"></span> Pablo Blázquez Campos · Antequera, Málaga</span>
+    <span>© <span id="yr"></span> Pablo Blázquez Campos · Con base en Antequera, España</span>
     <span><a href="#">Aviso legal</a><a href="#">Privacidad</a><a href="#">Cookies</a></span>
   </div>
 </footer>
